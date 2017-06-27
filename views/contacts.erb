@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Conacts</title>
+</head>
+<body>
+<p> <%= @welcomecustomer %></p>
+<h2>Напишите нам!</h2>
+<form action="/contacts" method="POST">
+  	
+	<div class="form-group">
+    <input type="text" name="username" class="form-control" placeholder="Введите ваше имя" value=<%= @customername %> >
+  	</div>
+
+  	<div class="form-group">
+    <input type="email" class="form-control" name="email" placeholder="Email" value=<%= @email %>>
+	</div>
+
+	<div class="form-group">		
+	<textarea  class="form-control" name="message" rows="3" placeholder="Type message.." value=<%= @message %>></textarea>
+	</div>
+
+	<button type="submit" class="btn btn-primary">Go!</button>
+
+</form>
+
+</body>
+</html>

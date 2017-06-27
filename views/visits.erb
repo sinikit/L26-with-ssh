@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>visits</title>
+</head>
+<body>
+
+<script>
+$(function(){
+  $('#color').simplecolorpicker();
+
+  //Тут можно пистаь любой javascript код который исполняется после загрузки страницы
+})
+</script>
+
+<p> <%= @welcomecustomer %></p>
+<p>Записаться на приём</p>
+<form action="/visits" method="POST">
+  <div class="form-group">
+    <label>Ваше имя</label>
+    <input type="text" name="username" class="form-control" placeholder="Введите ваше имя" value=<%= @customername %> >
+  </div>
+
+  <div class="form-group">
+    <label>Номер телефона</label>
+    <input type="text" name="phonenumber" class="form-control" placeholder="Введите ваш номер телефона" value=<%= @phonenumber %>>
+  </div>
+
+  <div class="form-group">
+    <label>Время записи</label>
+    <input type="text" name="datatime" class="form-control" placeholder="Введите время записи" value=<%= @datatime%>>
+  </div>
+
+<div>
+<label >Выбирите специалиста: </label>
+<select class="form-control" name="spec" value=<%= @specialist%>>
+  <option>Jessie Pinkman</option>
+  <option>Walter White</option>
+  <option>Gus Fring</option>
+</select>
+ 
+</div>
+<br>
+
+
+<div>
+<label >Выбирите краску: </label>
+<select name="color" id="color" value=<%= @color%>>
+  <option value="#7bd148">Green</option>
+  <option value="#5484ed">Bold blue</option>
+  <option value="#a4bdfc">Blue</option>
+  <option value="#46d6db">Turquoise</option>
+  <option value="#7ae7bf">Light green</option>
+  <option value="#51b749">Bold green</option>
+  <option value="#fbd75b">Yellow</option>
+  <option value="#ffb878">Orange</option>
+  <option value="#ff887c">Red</option>
+  <option value="#dc2127">Bold red</option>
+  <option value="#dbadff">Purple</option>
+  <option value="#e1e1e1">Gray</option>
+</select>
+</div>
+
+
+
+
+<br>
+  <button type="submit" class="btn btn-primary">Записаться</button>
+</form>
+
+
+
+
+</body>
+</html>
