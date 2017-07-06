@@ -23,9 +23,9 @@ post '/visits' do
 	@specialist = params[:spec]
 	@color = params[:color]
 	hh={
-		username:'Type yor name',
-		phonenumber: 'Type yor phonenumber',
-		datatime: 'Type yor datatime'}
+		username:'Type your name',
+		phonenumber: 'Type your phonenumber',
+		datatime: 'Type your datatime'}
 	
 		@error = is_the_params_empty hh, params
 			if @error == ''	
