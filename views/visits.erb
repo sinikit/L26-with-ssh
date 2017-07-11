@@ -33,10 +33,10 @@ $(function(){
 
 <div>
 <label >Выбирите специалиста: </label>
-<select class="form-control" name="spec" value=<%= @specialist%>>
-  <option>Jessie Pinkman</option>
-  <option>Walter White</option>
-  <option>Gus Fring</option>
+<select class="form-control" name="spec" >
+  <option <%= @specialist=="Jessie Pinkman" ? 'selected': ''%> >Jessie Pinkman</option>
+  <option <%= @specialist=="Walter White" ? 'selected': ''%> >Walter White</option>
+  <option <%= @specialist=="Gus Fring" ? 'selected': ''%> >Gus Fring</option>
 </select>
  
 </div>
