@@ -5,6 +5,22 @@ require 'pony'
 require 'sinatra/reloader'
 require 'sqlite3'
 
+configure do
+	$db = SQLite3::Database.new './public/databasse/barbershop.sqlite'
+
+	$db.execute  'CREATE TABLE IF NOT EXISTS "Users" 
+	(
+    "id"        INTEGER PRIMARY KEY AUTOINCREMENT
+                      UNIQUE
+                      NOT NULL,
+    "name"      TEXT,
+    "phone"     VARCHAR,
+    "datestamp" VARCHAR,
+    "barber"    VARCHAR,
+    "color"     VARCHAR
+	)'
+end
+
 get '/' do
 	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
 end
@@ -73,7 +89,6 @@ post '/contacts' do
 	erb :contacts
 end
 
-
 def tofile userdata ,  file_name
 	f=File.open("./public/#{file_name}.txt", "a")
 	f.print userdata
@@ -81,18 +96,18 @@ def tofile userdata ,  file_name
 end
 
 def tobase date
-	db = SQLite3::Database.new './public/databasse/barbershop.sqlite'
-	db.execute "INSERT INTO Users (Name,
+	
+	$db.execute "INSERT INTO Users (name,
 								   phone,
 								   datestamp,
 								   barber,
-								   color) VALUES 
-								   ('#{date[:username]}',
-								   '#{date[:phonenumber]}',
-								   '#{date[:datatime]}',
-								   '#{date[:spec]}',
-								   '#{date[:color]}')"
-	db.close
+								   color) VALUES (?,?,?,?,?)",
+								   [date[:username],
+								   date[:phonenumber],
+								   date[:datatime],
+								   date[:spec],
+								   date[:color]]
+	$db.close
 
 end
 
