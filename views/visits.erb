@@ -8,6 +8,8 @@
 <script>
 $(function(){
   $('#color').simplecolorpicker();
+  $('#datetimepicker').datetimepicker();
+
 
   //Тут можно пистаь любой javascript код который исполняется после загрузки страницы
 })
@@ -28,7 +30,7 @@ $(function(){
 
   <div class="form-group">
     <label>Время записи</label>
-    <input type="text" name="datatime" class="form-control" placeholder="Введите время записи" value=<%= @datatime%>>
+    <input id="datetimepicker" type="text" name="datatime" class="form-control" placeholder="Введите время записи" value=<%= @datatime%>>
   </div>
 
 <div>

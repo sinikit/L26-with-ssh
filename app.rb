@@ -5,8 +5,12 @@ require 'pony'
 require 'sinatra/reloader'
 require 'sqlite3'
 
+def get_db
+ return SQLite3::Database.new './public/databasse/barbershop.sqlite'
+end
+
 configure do
-	$db = SQLite3::Database.new './public/databasse/barbershop.sqlite'
+	$db = get_db
 
 	$db.execute  'CREATE TABLE IF NOT EXISTS "Users" 
 	(
@@ -107,7 +111,7 @@ def tobase date
 								   date[:datatime],
 								   date[:spec],
 								   date[:color]]
-	$db.close
+	#$db.close
 
 end
 
@@ -121,3 +125,6 @@ def is_the_params_empty hh, params
 	return result
 end
 
+def get_db
+ return SQLite3::Database.new './public/databasse/barbershop.sqlite'
+end
