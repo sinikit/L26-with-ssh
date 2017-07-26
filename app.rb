@@ -37,6 +37,12 @@ get '/visits' do
 	erb :visits
 end
 
+get '/showusers' do
+  $db.execute "SELECT * FROM Users" do |row|
+		@welcomecustomer = row
+	end
+end
+
 post '/visits' do
 	@customername = params[:username]
 	@phonenumber = params[:phonenumber]
@@ -99,8 +105,8 @@ def tofile userdata ,  file_name
 	f.close
 end
 
-def tobase date
 	
+def tobase date
 	$db.execute "INSERT INTO Users (name,
 								   phone,
 								   datestamp,
