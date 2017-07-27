@@ -38,9 +38,14 @@ get '/visits' do
 end
 
 get '/showusers' do
-  $db.execute "SELECT * FROM Users" do |row|
-		@welcomecustomer = row
+	
+	@showusers_list = Array.new
+	$db.execute "SELECT * FROM Users" do |row|
+		@showusers_list << row.join 
 	end
+
+
+	erb :showusers
 end
 
 post '/visits' do
